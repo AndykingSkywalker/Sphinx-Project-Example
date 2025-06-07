@@ -15,11 +15,8 @@ pipeline {
     }
 
     triggers {
-        // Triggers the pipeline on a push to the 'main' branch.
-        // Adjust 'main' to your primary branch if different (e.g., 'master').
-        githubPush {
-            branch('main')
-        }
+        // Polls the SCM every 5 minutes for changes.
+        pollSCM('H/5 * * * *')
     }
 
     stages {
