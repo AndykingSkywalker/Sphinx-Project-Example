@@ -11,7 +11,7 @@ pipeline {
         GIT_CREDENTIALS_ID = 'github-credentials'
         // The URL of your GitHub repository.
         // Ensure this uses the HTTPS format.
-        REPO_URL = 'github.com/your-username/your-repo.git'
+        REPO_URL = 'github.com/AndykingSkywalker/Sphinx-Project-Example.git'
     }
 
     triggers {
