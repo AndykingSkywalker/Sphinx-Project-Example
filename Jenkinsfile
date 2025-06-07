@@ -22,9 +22,12 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                // Installs Python dependencies from requirements.txt.
-                // Consider using a virtual environment if your Jenkins agent has multiple Python projects.
-                sh 'pip install -r requirements.txt'
+                // Ensure Python and pip are available.
+                sh 'python3 --version || exit 1'
+                sh 'python3 -m pip --version || exit 1'
+
+                // Install dependencies using pip.
+                sh 'python3 -m pip install -r requirements.txt'
             }
         }
 
