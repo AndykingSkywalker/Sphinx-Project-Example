@@ -33,9 +33,8 @@ pipeline {
 
         stage('Build Sphinx HTML') {
             steps {
-                // Builds the Sphinx documentation into HTML format.
-                // The source directory is 'docs/' and output is 'docs/_build/html'.
-                sh "sphinx-build -b html docs/ ${DOCS_BUILD_DIR}"
+                // Add the Python bin directory to PATH and build the Sphinx documentation.
+                sh 'export PATH=$PATH:/Users/andrew/Library/Python/3.9/bin && sphinx-build -b html docs/ ${DOCS_BUILD_DIR}'
             }
         }
 
