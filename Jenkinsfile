@@ -33,8 +33,8 @@ pipeline {
 
         stage('Build Sphinx HTML') {
             steps {
-                // Clean previous build artifacts
-                sh 'rm -rf ${DOCS_BUILD_DIR}'
+                // Clean previous build artifacts (entire build directory)
+                sh 'rm -rf docs/_build'
                 // Add the Python bin directory to PATH and build the Sphinx documentation.
                 // Add project root to PYTHONPATH so autodoc can import modules.
                 sh 'export PATH=$PATH:/Users/andrew/Library/Python/3.9/bin && PYTHONPATH=$(pwd) sphinx-build -b html docs/ ${DOCS_BUILD_DIR}'
