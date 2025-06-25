@@ -15,27 +15,26 @@ pipeline {
     }
 
     triggers {
-        // Triggers the pipeline on a push to the 'main' branch.
-        // Adjust 'main' to your primary branch if different (e.g., 'master').
-        githubPush {
-            branch('main')
-        }
+        // Polls the SCM every 5 minutes for changes.
+        pollSCM('H/5 * * * *')
     }
 
     stages {
         stage('Install Dependencies') {
             steps {
-                // Installs Python dependencies from requirements.txt.
-                // Consider using a virtual environment if your Jenkins agent has multiple Python projects.
-                sh 'pip install -r requirements.txt'
+                // Ensure Python and pip are available.
+                sh 'python3 --version || exit 1'
+                sh 'python3 -m pip --version || exit 1'
+
+                // Install dependencies using pip.
+                sh 'python3 -m pip install -r requirements.txt'
             }
         }
 
         stage('Build Sphinx HTML') {
             steps {
-                // Builds the Sphinx documentation into HTML format.
-                // The source directory is 'docs/' and output is 'docs/_build/html'.
-                sh "sphinx-build -b html docs/ ${DOCS_BUILD_DIR}"
+                // Add the Python bin directory to PATH and build the Sphinx documentation.
+                sh 'export PATH=$PATH:/Users/andrew/Library/Python/3.9/bin && sphinx-build -b html docs/ ${DOCS_BUILD_DIR}'
             }
         }
 
