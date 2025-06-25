@@ -101,6 +101,9 @@
 <dt class="sig sig-object py" id="books.books.Book.checkout">
 <span class="sig-name descname"><span class="pre">checkout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/books/books.html#Book.checkout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#books.books.Book.checkout" title="Link to this definition"></a></dt>
 <dd><p>Check out a book to a user.</p>
+<p>This method checks if the book is available in stock and allows a user to check it out.
+If the book is already checked out by the maximum number of users, it returns False.
+If the book is available, it adds the user ID to the list of checked out users and returns True.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>user_id</strong> – ID of the user checking out the book</p>
