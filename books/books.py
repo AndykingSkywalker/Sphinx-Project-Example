@@ -21,6 +21,10 @@ class Book:
         """
         Check out a book to a user.
 
+        This method checks if the book is available in stock and allows a user to check it out.
+        If the book is already checked out by the maximum number of users, it returns False.
+        If the book is available, it adds the user ID to the list of checked out users and returns True.
+
         :param user_id: ID of the user checking out the book
         
         :return: Bool indicating success or failure
