@@ -8,10 +8,10 @@ pipeline {
         GH_PAGES_BRANCH = 'gh-pages'
         // Jenkins credentials ID for accessing GitHub.
         // Make sure this ID is correctly configured in Jenkins with access to your repository.
-        GIT_CREDENTIALS_ID = 'github-credentials'
+        GIT_CREDENTIALS_ID = 'webhook'
         // The URL of your GitHub repository.
         // Ensure this uses the HTTPS format.
-        REPO_URL = 'https://github.com/AndykingSkywalker/Sphinx-Project-Example.git'
+        REPO_URL = 'github.com/AndykingSkywalker/Sphinx-Project-Example.git'
     }
 
     triggers {
