@@ -52,6 +52,8 @@ pipeline {
                     dir('gh-pages-temp') {
                         sh 'git rm -rf * || true'
                         sh "cp -r ../${DOCS_BUILD_DIR}/* ."
+                        // Create .nojekyll to ensure GitHub Pages serves files/folders starting with underscores
+                        sh 'touch .nojekyll'
                         sh 'git add .'
                         sh 'git commit -m "Update docs from Jenkins build ${BUILD_NUMBER}" || true'
                         sh 'git push origin HEAD'
