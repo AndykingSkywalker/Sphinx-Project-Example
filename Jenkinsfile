@@ -34,7 +34,8 @@ pipeline {
         stage('Build Sphinx HTML') {
             steps {
                 // Add the Python bin directory to PATH and build the Sphinx documentation.
-                sh 'export PATH=$PATH:/Users/andrew/Library/Python/3.9/bin && sphinx-build -b html docs/ ${DOCS_BUILD_DIR}'
+                // Add project root to PYTHONPATH so autodoc can import modules.
+                sh 'export PATH=$PATH:/Users/andrew/Library/Python/3.9/bin && PYTHONPATH=$(pwd) sphinx-build -b html docs/ ${DOCS_BUILD_DIR}'
             }
         }
 
