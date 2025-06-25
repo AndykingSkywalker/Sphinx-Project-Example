@@ -76,6 +76,8 @@ Pull requests are welcome! For major changes, please open an issue first to disc
 
 ## License
 
+[![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 This project is licensed under the MIT License.
 
 ---
