@@ -11,7 +11,7 @@ pipeline {
         GIT_CREDENTIALS_ID = 'github-credentials'
         // The URL of your GitHub repository.
         // Ensure this uses the HTTPS format.
-        REPO_URL = 'github.com/AndykingSkywalker/Sphinx-Project-Example.git'
+        REPO_URL = 'https://github.com/AndykingSkywalker/Sphinx-Project-Example.git'
     }
 
     triggers {
@@ -49,11 +49,11 @@ pipeline {
 
                     // Clones the gh-pages branch into a temporary directory.
                     // Using a full URL with credentials directly in the clone command for robust access.
-                    sh "git clone --single-branch --branch ${GH_PAGES_BRANCH} https://${GIT_USER}:${GIT_PASS}@${REPO_URL} gh-pages-temp"
+                    sh 'git clone --single-branch --branch ${GH_PAGES_BRANCH} https://${GIT_USER}:${GIT_PASS}@${REPO_URL} gh-pages-temp'
 
                     dir('gh-pages-temp') {
                         // Cleans the existing content in gh-pages to prepare for new documentation.
-                        sh 'git rm -rf .'
+                        sh 'git rm -rf * || true'
                         // Copies the newly built documentation into the gh-pages directory.
                         sh "cp -r ../${DOCS_BUILD_DIR}/* ."
                         // Adds all changes, commits, and pushes to the gh-pages branch.
